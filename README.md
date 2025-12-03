@@ -14,3 +14,10 @@ The investigation focuses on detecting and analysing simulated cyber attacks tar
 - Produce professional SOC reporting and findings
 
 ---
+## Report Structure
+- Introduction
+- SOC Roles & Incident Handling Reflection
+- Installation & Data Preparation
+- Guided Questions (Q1–Q8 AWS)
+- Conclusion & References
+- Video Presentation (Link)
