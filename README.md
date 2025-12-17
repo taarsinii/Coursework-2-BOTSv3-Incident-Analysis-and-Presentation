@@ -80,23 +80,28 @@ This setup simulates a functional Security Operations Center (**SOC**) environme
     
 <img width="532" height="268" alt="image" src="https://github.com/user-attachments/assets/81391036-f2b5-488f-bfd9-97cdafb2e32e" />
 
+
 * **Installing Splunk Enterprise:**
    * On a Windows-based computer, Splunk Enterprise was installed after being downloaded from the official Splunk portal.
    * During installation, an administrator account was set up, guaranteeing that only allowed users can change system settings.
 
 <img width="532" height="268" alt="image" src="https://github.com/user-attachments/assets/ab152d65-a8ff-49ba-b308-294bc4676b74" />
 
+
 * **Verification of the Splunk Web Interface:**
   * A successful installation was validated by accessing the Splunk Web interface via a browser.
  
 <img width="532" height="268" alt="image" src="https://github.com/user-attachments/assets/971498e1-8c6b-48ff-a2c1-98298522e1e1" />
 
+
 <img width="532" height="268" alt="image" src="https://github.com/user-attachments/assets/ba939c68-77d4-43a9-be7d-0d07579853c0" />
+
 
 * **Installation of Splunk Universal Forwarder:**
   * The Splunk Universal Forwarder was downloaded from the Splunk platform and installed as the primary SOC data collection component, securely and reliably forwarding log data from endpoint and server systems to the central Splunk Enterprise SIEM.
  
 <img width="532" height="268" alt="image" src="https://github.com/user-attachments/assets/a1439826-b974-40ed-a3ab-6194f50ba4c1" />
+
 
 ## **3.3 BOTSv3 Dataset Ingestion**
 
@@ -105,13 +110,17 @@ This setup simulates a functional Security Operations Center (**SOC**) environme
 
 <img width="725" height="367" alt="image" src="https://github.com/user-attachments/assets/be1d9d47-c779-4da5-86d4-117efb1eef50" />
 
+
 * The **BOTSv3** dataset was imported into Splunk by selecting the **Add Data** then **Upload process**.
 
 <img width="727" height="364" alt="image" src="https://github.com/user-attachments/assets/5407a12a-9a10-4597-89a9-fb672d55ed41" />
 
+
 <img width="728" height="367" alt="image" src="https://github.com/user-attachments/assets/c58a37d3-635f-448f-ae61-5a8420f9daaf" />
 
+
 <img width="726" height="366" alt="image" src="https://github.com/user-attachments/assets/b0b44af1-ad3c-43cb-82e2-9902261f0dc1" />
+
 
 * All logs have been added to the Splunk botsv3 index.
 
@@ -130,15 +139,15 @@ These sourcetypes work together to provide the visibility necessary in an enterp
 
 Several kinds of validation checks were run to verify the successful data ingestion:
 
-**Index Event Count Verification:**
-<img width="354" height="39" alt="image" src="https://github.com/user-attachments/assets/8ce59ace-8351-46c0-a645-0f0f970781de" />
+### **Index Event Count Verification:**
+<img width="482" height="50" alt="image" src="https://github.com/user-attachments/assets/bbbf1479-b11c-4857-a3c0-a0f9e9369022" />
 
 <img width="532" height="268" alt="image" src="https://github.com/user-attachments/assets/f6ccd56d-677a-40d6-b79b-c352f6dffe0b" />
 
 ➤ This proved that the events are successfully indexed.
 
-**Sourcetype Verification:**
-<img width="354" height="39" alt="image" src="https://github.com/user-attachments/assets/776f73d8-d300-4a41-ab3d-788eff58aad1" />
+### **Sourcetype Verification:**
+<img width="484" height="50" alt="image" src="https://github.com/user-attachments/assets/c68c1a9b-979c-48a3-922f-d745a05f53dc" />
 
 <img width="532" height="268" alt="image" src="https://github.com/user-attachments/assets/9a9ff0b2-b1d9-4a34-a6b3-b07b3ee6ad68" />
 
@@ -169,15 +178,18 @@ The goal of question 1 is to identify all **IAM** (Identity and Access Managemen
 
 <img width="421" height="119" alt="image" src="https://github.com/user-attachments/assets/b8d5cd55-c85a-495f-a1df-bfb794602802" />
 
+
 ### Explanation of Query:
 
 <img width="951" height="337" alt="image" src="https://github.com/user-attachments/assets/45ec5fd0-ef0c-433a-8c3b-5aa7c3482a16" />
+
 
 ### **➤ Result**
 
 **bstoll,btun,splunk_access,web_admin**
 
 <img width="683" height="267" alt="image" src="https://github.com/user-attachments/assets/73ebfcb4-9467-4860-a100-b4a91cb2e0b0" />
+
 
 ### **➤ SOC Relevance** 
 
@@ -200,15 +212,18 @@ The goal of question 2 is to identify which CloudTrail field shows AWS API calls
 
 <img width="660" height="105" alt="image" src="https://github.com/user-attachments/assets/05bb316b-1559-46ea-a68c-25eb111b94d0" />
 
+
 ### **Explanation of Query:**
 
 <img width="986" height="287" alt="image" src="https://github.com/user-attachments/assets/65d4ab52-236f-48e7-9d7b-36e928fb69c3" />
+
 
 ### **➤ Result**
 
 **userIdentity.sessionContext.attributes.mfaAuthenticated**
 
 <img width="683" height="268" alt="image" src="https://github.com/user-attachments/assets/7f0172ca-87da-4cae-b79c-f4e74d10f3a3" />
+
 
 ### **➤ SOC Relevance** 
 
@@ -230,15 +245,18 @@ The goal of question 3 is to identify the processor number used by the web serve
 
 <img width="354" height="56" alt="image" src="https://github.com/user-attachments/assets/68fb630a-181c-47f7-b1da-11d5033fcbda" />
 
+
 ### **Explanation of Query:**
 
 <img width="796" height="167" alt="image" src="https://github.com/user-attachments/assets/445d7c6e-0e51-4a72-9fd2-d15fb3ab55b9" />
+
 
 ### **➤ Result**
 
 **E5-2676**
 
 <img width="934" height="365" alt="image" src="https://github.com/user-attachments/assets/0fb38ecd-d682-4e1a-b0f7-326624fb79a5" />
+
 
 ### **➤ SOC Relevance**
 
@@ -261,15 +279,18 @@ The goal of question 4 is to identify the specific Event ID of the API call that
 
 <img width="689" height="102" alt="image" src="https://github.com/user-attachments/assets/6594f11a-6691-4e6b-b4df-e1f61bb2d885" />
 
+
 ### **Explanation of Query:**
 
 <img width="1023" height="311" alt="image" src="https://github.com/user-attachments/assets/96694b69-c13d-4db1-975a-030da7209f6f" />
+
 
 ### **➤ Result**
 
 **ab45689d-69cd-41e7-8705-5350402cf7ac**
 
 <img width="933" height="364" alt="image" src="https://github.com/user-attachments/assets/0013a9ef-8ecb-43d0-9014-900a9e6f7d4b" />
+
 
 ### **➤ SOC Relevance**
 
@@ -294,6 +315,7 @@ The goal of question 5 is to identify the username that made the S3 bucket publi
 
 <img width="930" height="364" alt="image" src="https://github.com/user-attachments/assets/5b30b742-571e-4d07-8da1-ec9888c9f996" />
 
+
 ### **➤ SOC Relevance**
 
 One of the main responsibilities of SOC is to identify the specific person who made a risky or unauthorised change to the cloud configuration. Identifying that the user account **"bstoll"** was the source of the modification allows the SOC to:
@@ -317,6 +339,7 @@ The goal of question 6 is to identify the S3 bucket that was made public..This t
 
 <img width="934" height="365" alt="image" src="https://github.com/user-attachments/assets/df4cf5c2-7f0e-4d27-80ec-eb78e2a45ec8" />
 
+
 ### **➤ SOC Relevance**
 
 Identifying which S3 bucket, "**frothlywebcode**," was made accessible to the public is important for assessing the level of exposure. This information enables SOC analysts to:
@@ -338,15 +361,18 @@ The goal of question 7 is to identifying the name of the text file that was uplo
 
 <img width="689" height="71" alt="image" src="https://github.com/user-attachments/assets/6ae5c63e-3ca6-4f35-a80c-76555c933470" />
 
+
 ### **Explanation of Query:**
 
 <img width="1005" height="430" alt="image" src="https://github.com/user-attachments/assets/589e2fa3-c58a-4ed8-bef6-c7cea99fd9a7" />
+
 
 ### **➤ Result**
 
 **OPEN_BUCKET_PLEASE_FIX.txt**
 
 <img width="934" height="363" alt="image" src="https://github.com/user-attachments/assets/4f63e569-8930-4de0-badd-91c45fa6b575" />
+
 
 ### **➤ SOC Relevance**
 
@@ -379,23 +405,28 @@ These keywords showed that the **winhostmon sourcetype** provides metadata about
 
 <img width="327" height="51" alt="image" src="https://github.com/user-attachments/assets/774f57df-e18d-41b6-9f7a-0d8fdaf2b244" />
 
+
 ### **Explanation of Query:**
 
 <img width="858" height="427" alt="image" src="https://github.com/user-attachments/assets/c6c187dc-413c-4fb2-9695-62b3e37f10e0" />
+
 
 ### **➤ SPL Query- Step 2: Extract the Fully Qualified Domain Name (FQDN)**
 
 <img width="496" height="109" alt="image" src="https://github.com/user-attachments/assets/c04acdce-d140-415d-b8f4-4bf03965ef54" />
 
+
 ### **Explanation of Query:**
 
 <img width="715" height="488" alt="image" src="https://github.com/user-attachments/assets/afdeb25e-cc9b-4341-bd1a-9a989ca927e9" />
+
 
 ### **➤ Result**
 
 **BSTOLL-L.froth.ly**
 
 <img width="935" height="366" alt="image" src="https://github.com/user-attachments/assets/1bf7637a-e12c-43aa-a149-f4ae31d8116d" />
+
 
 ### **➤ SOC Relevance**
 
