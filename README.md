@@ -26,3 +26,45 @@ The investigation was based on the following assumptions:
 
 The main objective of this report is to use Splunk-based analytical approaches to solve BOTSv3 200-level AWS investigation questions while also showing professional SOC reasoning, clear evidence presentation, and professional cybersecurity analysis [1], [4].
 
+## 2. SOC Roles & Incident Handling Reflection
+
+Security Operations Centres (SOCs) use a structured tiered model to provide rapid detection, analysis, and remediation of security issues [1]. Each tier has specific responsibilities that facilitate continuous security monitoring.
+
+### ➤ SOC Tier Responsibilities
+
+| SOC Tier | Responsibilities | Relevance to BOTSv3 Investigation |
+| :--- | :--- | :--- |
+| **Tier 1:** Monitoring and Triage | Reviewing initial alerts, minimising noise, and confirming suspicious activity | Querying CloudTrail logs to detect unusual IAM activity and authentication anomalies (Q1-Q2) |
+| **Tier 2:** Incident Analysis | In-depth investigation, contextual correlation, and incident scope determination | Analysis of S3 misconfigurations, public ACL changes, and unauthorised file uploads (Q4-Q7) |
+| **Tier 3:** Threat Hunting and Advanced Response | Analysis of the root causes, long-term mitigating strategies, and intelligence-driven response | Finding risky endpoints, such BSTOLL-L.froth.ly, and suggesting architecture improvements (Q8) |
+
+The investigative tasks performed throughout this investigation included Tier-1 and Tier-2 responsibilities such as alert verification, cloud misconfiguration analysis, and endpoint posture evaluation. The continual refinement of queries demonstrates how SOC analysts switch between data sources to validate assumptions and identify root causes [2].
+
+### ➤ Incident Handling Methodology (NIST Framework)
+
+The BOTSv3 exercise adheres to the NIST Incident Response Lifecycle, which offers a framework for enterprise issue handling.
+
+| NIST Phase | How This Applied in BOTSv3 Investigation |
+| :--- | :--- |
+| **Preparation** | Validating the dashboard and making sure logs are accurately ingested and sourcetype configuration for early threat visibility. |
+| **Detection and Analysis** | Identifying a publicly accessible S3 bucket, IAM anomalies, and missing MFA controls using CloudTrail telemetry. |
+| **Containment** | Identifying the high-risk endpoint (BSTOLL-L.froth.ly) and figuring out which assets and people needed priority security. |
+| **Eradication and Recovery** | Suggesting stronger **MFA** enforcement, better access control list (**ACL**) settings, and set up ongoing compliance monitoring. |
+
+This exercise highlighted the importance of data visibility as without CloudTrail or S3 access logs, important misconfigurations would have gone undetected [5], [6]. Furthermore, iterative search refinement simulates real-world SOC operations, where uncertainty leads to pivoting across various data sources. If this were a live SOC event, automation like Splunk risk-based alerting and Security Orchestration, Automation and Response (SOAR) processes would speed up the response, lowering both the Mean Time to Detect threats (MTTD) and the Mean Time to Respond (MTTR) [2], [1].
+
+Overall, the investigation highlighted how Splunk's technical findings effectively improve operational resilience by guiding SOC strategy, improving detection rules, and increasing cloud security governance.
+
+## 3. Installation & Data Preparation
+
+An effective Security Operations Centre (SOC) needs a reliable centralised log management and detection platform. Splunk Enterprise was installed locally for this investigation in order to simulate SOC log ingestion, analysis capabilities, and investigation processes using the BOTSv3 dataset.
+
+### 3.1 Overview of Splunk Installation
+
+| Resource | Purpose |
+| :--- | :--- |
+| **Splunk Enterprise** (local server) | The main SIEM platform for log ingestion, searching, alerting, dashboards, and monitoring security events. |
+| **Splunk Universal Forwarder** | Securely forwards logs from endpoints to the Splunk indexer, which supports enterprise-scale data collecting. |
+| **BOTSv3 Dataset** | Provides realistic enterprise security logs for threat analysis and security analyst training based on known attack scenarios. |
+
+This setup simulates a functional Security Operations Center (SOC) environment by centralising cloud and endpoint telemetry into a single Security Information and Event Management (SIEM) platform, allowing for real-time threat detection and analysis [1], [2].
