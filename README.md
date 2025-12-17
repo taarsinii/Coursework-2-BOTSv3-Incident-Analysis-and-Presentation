@@ -1,7 +1,7 @@
 # Coursework 2: BOTSv3 Incident Analysis and Presentation
 
-**YouTube video presentation (max 10 minutes):**
-
+### **YouTube video presentation (max 10 minutes):**
+##
 # **1. Introduction**
 
 Security Operations Centres (**SOCs**) are in charge of protecting enterprise environments through continuous log monitoring, threat detection, and incident response [1]. Splunk Enterprise and the BOTSv3 (**Boss of the SOC**) dataset, which includes real-world security telemetry such as AWS CloudTrail, S3 access logs, hardware inventory, and Windows host monitoring, are used in this assessment to simulate real-world SOC operations [2], [3].
