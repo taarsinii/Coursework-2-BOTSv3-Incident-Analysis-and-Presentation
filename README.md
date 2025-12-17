@@ -63,7 +63,7 @@ An effective Security Operations Centre (**SOC**) needs a reliable centralised l
 
 ## 3.1 Overview of Splunk Installation
 
-| **Resource** | **Purpose** |
+| **Component** | **Purpose** |
 | :--- | :--- |
 | **Splunk Enterprise** (local server) | The main SIEM platform for log ingestion, searching, alerting, dashboards, and monitoring security events. |
 | **Splunk Universal Forwarder** | Securely forwards logs from endpoints to the Splunk indexer, which supports enterprise-scale data collecting. |
@@ -75,23 +75,35 @@ This setup simulates a functional Security Operations Center (**SOC**) environme
 
 **1.Download and install Splunk Enterprise**
 
-* Local instance running under Windows.
+* **Registration for the Splunk Platform:**
+  * To get access to licensed software downloads, an account is created on the official Splunk website.
+    
+<img width="532" height="268" alt="image" src="https://github.com/user-attachments/assets/81391036-f2b5-488f-bfd9-97cdafb2e32e" />
 
-* Admin access is configured using secure login.
+* **Installing Splunk Enterprise:**
+   * On a Windows-based computer, Splunk Enterprise was installed after being downloaded from the official Splunk portal.
+   * During installation, an administrator account was set up, guaranteeing that only allowed users can change system settings.
 
-**2.Start the Splunk Web**
+<img width="532" height="268" alt="image" src="https://github.com/user-attachments/assets/ab152d65-a8ff-49ba-b308-294bc4676b74" />
 
-* Accessed using the browser interface.
+* **Verification of the Splunk Web Interface:**
+  * A successful installation was validated by accessing the Splunk Web interface via a browser.
+ 
+<img width="532" height="268" alt="image" src="https://github.com/user-attachments/assets/971498e1-8c6b-48ff-a2c1-98298522e1e1" />
 
-  <img width="532" height="268" alt="image" src="https://github.com/user-attachments/assets/8a8968f4-3d8a-4fbb-91fb-0298b98baffb" />
-  <img width="532" height="268" alt="image" src="https://github.com/user-attachments/assets/5a2df9d4-baae-43d2-bde1-1da156cdbb6f" />
+<img width="532" height="268" alt="image" src="https://github.com/user-attachments/assets/ba939c68-77d4-43a9-be7d-0d07579853c0" />
+
+* **Installation of Splunk Universal Forwarder:**
+  * The Splunk Universal Forwarder was downloaded from the Splunk platform and installed as the primary SOC data collection component, securely and reliably forwarding log data from endpoint and server systems to the central Splunk Enterprise SIEM.
+ 
+<img width="532" height="268" alt="image" src="https://github.com/user-attachments/assets/a1439826-b974-40ed-a3ab-6194f50ba4c1" />
 
 ## **3.3 BOTSv3 Dataset Ingestion**
 
 * BOTSv3 was downloaded from GitHub.
   Link: **https://github.com/splunk/botsv3**
 
-  <img width="725" height="367" alt="image" src="https://github.com/user-attachments/assets/be1d9d47-c779-4da5-86d4-117efb1eef50" />
+<img width="725" height="367" alt="image" src="https://github.com/user-attachments/assets/be1d9d47-c779-4da5-86d4-117efb1eef50" />
 
 * The **BOTSv3** dataset was imported into Splunk by selecting the **Add Data** then **Upload process**.
 
