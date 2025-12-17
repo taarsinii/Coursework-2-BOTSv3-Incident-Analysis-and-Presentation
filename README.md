@@ -113,6 +113,7 @@ This setup simulates a functional Security Operations Center (**SOC**) environme
 These sourcetypes work together to provide the visibility necessary in an enterprise SOC.
 
 ## **3.4 Validation of the Dataset Ingestion**
+
 Several kinds of validation checks were run to verify the successful data ingestion:
 
 **Index Event Count Verification:**
@@ -144,27 +145,27 @@ The setup fulfils key operational needs of SOC:
 
 This section covers the full investigation of the BOTSv3 AWS-focused 200-level question set. Each query is answered using Splunk Search Processing Language (SPL), which includes supporting evidence, analysis, and clear mapping to SOC operations. Queries were run on the botsv3 index with CloudTrail, S3 Access Logs, hardware, and Windows host telemetry. The answers include both the technical outcome and the security relevance in a SOC setting [3], [5], [6].
 
-### **Q1- Identifying IAM Users Accessing AWS Services**
+## **Q1- Identifying IAM Users Accessing AWS Services**
 
-**➤ Goal**
+### **➤ Goal**
 
 The goal of question 1 is to identify all **IAM** (Identity and Access Management) users that accessed any AWS service whether the action was successful or unsuccessful. 
 
-**➤ SPL Query**
+### **➤ SPL Query**
 
 <img width="421" height="119" alt="image" src="https://github.com/user-attachments/assets/b8d5cd55-c85a-495f-a1df-bfb794602802" />
 
-Explanation of Query:
+### Explanation of Query:
 
 <img width="951" height="337" alt="image" src="https://github.com/user-attachments/assets/45ec5fd0-ef0c-433a-8c3b-5aa7c3482a16" />
 
-**➤ Result**
+### **➤ Result**
 
 **bstoll,btun,splunk_access,web_admin**
 
 <img width="683" height="267" alt="image" src="https://github.com/user-attachments/assets/73ebfcb4-9467-4860-a100-b4a91cb2e0b0" />
 
-**➤ SOC Relevance** 
+### **➤ SOC Relevance** 
 
 Identifying which IAM users are accessing AWS services is important for identity-related threat detection. This visibility allows the SOC to:
 
@@ -175,27 +176,27 @@ Identifying which IAM users are accessing AWS services is important for identity
 
 This is in line with SOC Tier-1 triage, in which analysts verify whether user activity is normal, and SOC Tier-2 analysis, in which identity logs are connected with other alerts to identify potential threats.
 
-### **Q2- Identifying AWS API Activity Without MFA**
+## **Q2- Identifying AWS API Activity Without MFA**
 
-**➤ Goal**
+### **➤ Goal**
 
 The goal of question 2 is to identify which CloudTrail field shows AWS API calls conducted without MFA enabled.
 
-**➤ SPL Query**
+### **➤ SPL Query**
 
 <img width="660" height="105" alt="image" src="https://github.com/user-attachments/assets/05bb316b-1559-46ea-a68c-25eb111b94d0" />
 
-**Explanation of Query:**
+### **Explanation of Query:**
 
 <img width="986" height="287" alt="image" src="https://github.com/user-attachments/assets/65d4ab52-236f-48e7-9d7b-36e928fb69c3" />
 
-**➤ Result**
+### **➤ Result**
 
 **userIdentity.sessionContext.attributes.mfaAuthenticated**
 
 <img width="683" height="268" alt="image" src="https://github.com/user-attachments/assets/7f0172ca-87da-4cae-b79c-f4e74d10f3a3" />
 
-**➤ SOC Relevance** 
+### **➤ SOC Relevance** 
 
 Multi-factor authentication (**MFA**) is a crucial security security measure. When API actions are performed without MFA, alerts can help in identifying:
 
@@ -205,27 +206,27 @@ Multi-factor authentication (**MFA**) is a crucial security security measure. Wh
 
 This is important for SOC detection and prevention operations.
 
-### **Q3 - Identifying the Processor Number of Web Servers**
+## **Q3 - Identifying the Processor Number of Web Servers**
 
-**➤ Goal**
+### **➤ Goal**
 
 The goal of question 3 is to identify the processor number used by the web servers. The **hardware** source type in Splunk was chosen because it records comprehensive telemetry for every host, including CPU, memory, storage, and network data.
 
-**➤ SPL Query**
+### **➤ SPL Query**
 
 <img width="354" height="56" alt="image" src="https://github.com/user-attachments/assets/68fb630a-181c-47f7-b1da-11d5033fcbda" />
 
-**Explanation of Query:**
+### **Explanation of Query:**
 
 <img width="796" height="167" alt="image" src="https://github.com/user-attachments/assets/445d7c6e-0e51-4a72-9fd2-d15fb3ab55b9" />
 
-**➤ Result**
+### **➤ Result**
 
 **E5-2676**
 
 <img width="934" height="365" alt="image" src="https://github.com/user-attachments/assets/0fb38ecd-d682-4e1a-b0f7-326624fb79a5" />
 
-**➤ SOC Relevance**
+### **➤ SOC Relevance**
 
 Hardware inventory data contributes to the SOC's capacity to profile and protect important infrastructure. Analysing processor models and server specifications allows analysts to:
 
@@ -236,27 +237,27 @@ Hardware inventory data contributes to the SOC's capacity to profile and protect
 
 This is in line with SOC Tier-2 responsibilities including asset management, impact assessment, and system profiling during incident investigations.
 
-### **Q4 - Event ID of Public S3 Bucket Misconfiguration**
+## **Q4 - Event ID of Public S3 Bucket Misconfiguration**
 
-**➤ Goal**
+### **➤ Goal**
 
 The goal of question 4 is to identify the specific Event ID of the API call that made an S3 bucket public.
 
-**➤ SPL Query**
+### **➤ SPL Query**
 
 <img width="689" height="102" alt="image" src="https://github.com/user-attachments/assets/6594f11a-6691-4e6b-b4df-e1f61bb2d885" />
 
-**Explanation of Query:**
+### **Explanation of Query:**
 
 <img width="1023" height="311" alt="image" src="https://github.com/user-attachments/assets/96694b69-c13d-4db1-975a-030da7209f6f" />
 
-**➤ Result**
+### **➤ Result**
 
 **ab45689d-69cd-41e7-8705-5350402cf7ac**
 
 <img width="933" height="364" alt="image" src="https://github.com/user-attachments/assets/0013a9ef-8ecb-43d0-9014-900a9e6f7d4b" />
 
-**➤ SOC Relevance**
+### **➤ SOC Relevance**
 
 S3 buckets that are publicly accessible pose a significant cloud security risk. Identifying the particular API call and event ID related with a misconfiguration allows the SOC to:
 
@@ -267,19 +268,19 @@ S3 buckets that are publicly accessible pose a significant cloud security risk. 
 
 This shows how SOC teams prevent cloud misconfiguration threats from getting worse and is in line with the **Analysis and Containment** phases of incident handling.
 
-### **Q5 - Identifying Bud’s Username**
+## **Q5 - Identifying Bud’s Username**
 
-**➤ Goal**
+### **➤ Goal**
 
 The goal of question 5 is to identify the username that made the S3 bucket publicly accessible.This task use the evidence get from the **question 4**.
 
-**➤ Result**
+### **➤ Result**
 
 **bstoll** 
 
 <img width="930" height="364" alt="image" src="https://github.com/user-attachments/assets/5b30b742-571e-4d07-8da1-ec9888c9f996" />
 
-**➤ SOC Relevance**
+### **➤ SOC Relevance**
 
 One of the main responsibilities of SOC is to identify the specific person who made a risky or unauthorised change to the cloud configuration. Identifying that the user account **"bstoll"** was the source of the modification allows the SOC to:
 
@@ -290,19 +291,19 @@ One of the main responsibilities of SOC is to identify the specific person who m
 
 This helps the **Analysis and Containment** phases of the incident response lifecycle by ensuring that risky actions are rapidly assigned to responsible users for corrective action.
 
-### **Q6- Public S3 Bucket Name**
+## **Q6- Public S3 Bucket Name**
 
-**➤ Goal**
+### **➤ Goal**
 
 The goal of question 6 is to identify the S3 bucket that was made public..This task use the evidence get from the **question 4**.
 
-**➤ Result**
+### **➤ Result**
 
 **frothlywebcode**
 
 <img width="934" height="365" alt="image" src="https://github.com/user-attachments/assets/df4cf5c2-7f0e-4d27-80ec-eb78e2a45ec8" />
 
-**➤ SOC Relevance**
+### **➤ SOC Relevance**
 
 Identifying which S3 bucket, "**frothlywebcode**," was made accessible to the public is important for assessing the level of exposure. This information enables SOC analysts to:
 
@@ -313,27 +314,27 @@ Identifying which S3 bucket, "**frothlywebcode**," was made accessible to the pu
 
 This procedure complies with SOC containment and risk mitigation actions, ensuring that misconfigured cloud assets are immediately secured to prevent exploitation.
 
-### **Q7- Identifying Uploaded Text File**
+## **Q7- Identifying Uploaded Text File**
 
-**➤ Goal**
+### **➤ Goal**
 
 The goal of question 7 is to identifying the name of the text file that was uploaded to the **“frothlywebcode”** S3 bucket while it was accessible to the public.
 
-**➤ SPL Query**
+### **➤ SPL Query**
 
 <img width="689" height="71" alt="image" src="https://github.com/user-attachments/assets/6ae5c63e-3ca6-4f35-a80c-76555c933470" />
 
-**Explanation of Query:**
+### **Explanation of Query:**
 
 <img width="1005" height="430" alt="image" src="https://github.com/user-attachments/assets/589e2fa3-c58a-4ed8-bef6-c7cea99fd9a7" />
 
-**➤ Result**
+### **➤ Result**
 
 **OPEN_BUCKET_PLEASE_FIX.txt**
 
 <img width="934" height="363" alt="image" src="https://github.com/user-attachments/assets/4f63e569-8930-4de0-badd-91c45fa6b575" />
 
-**➤ SOC Relevance**
+### **➤ SOC Relevance**
 
 Identifying the uploaded file "**OPEN_BUCKET_PLEASE_FIX.txt**" shows how analysts monitor interactions with cloud resources that have been compromised or improperly configured. This helps SOC operations by allowing for:
 
@@ -344,13 +345,13 @@ Identifying the uploaded file "**OPEN_BUCKET_PLEASE_FIX.txt**" shows how analyst
 
 This is in accordance with SOC detection and investigation processes, allowing analysts understand the scope of activity during a cloud misconfiguration problem.
 
-### **Q8- Identifying FQDN of the Endpoint Running a Different Windows Operating System Edition**
+## **Q8- Identifying FQDN of the Endpoint Running a Different Windows Operating System Edition**
 
-**➤ Goal**
+### **➤ Goal**
 
-The goal of question 8 is to identify FQDN of the endpoint that is running a different Windows operating system edition than the other hosts. To extract the Fully Qualified Domain Name (FQDN) of the outlier endpoint, firstly determine the correct data source, then find the relevant field holding OS information, and then compare hostnames.
+The goal of question 8 is to identify FQDN of the endpoint that is running a different Windows operating system edition than the other hosts. To extract the Fully Qualified Domain Name (**FQDN**) of the outlier endpoint, firstly determine the correct data source, then find the relevant field holding OS information, and then compare hostnames.
 
-** Keywords:**
+### ** Keywords:**
 
 In order to find an appropriate data source, basic keyword searches were started with:
 
@@ -360,29 +361,29 @@ In order to find an appropriate data source, basic keyword searches were started
 
 These keywords showed that the **winhostmon sourcetype** provides metadata about the endpoint's operating system. The **OS** field in this sourcetype clearly provides the operating system edition information necessary for this investigation.
 
-**➤ SPL Query- Step 1: Identify the Host with a Different OS**
+### **➤ SPL Query- Step 1: Identify the Host with a Different OS**
 
 <img width="327" height="51" alt="image" src="https://github.com/user-attachments/assets/774f57df-e18d-41b6-9f7a-0d8fdaf2b244" />
 
-**Explanation of Query:**
+### **Explanation of Query:**
 
 <img width="858" height="427" alt="image" src="https://github.com/user-attachments/assets/c6c187dc-413c-4fb2-9695-62b3e37f10e0" />
 
-**➤ SPL Query- Step 2: Extract the Fully Qualified Domain Name (FQDN)**
+### **➤ SPL Query- Step 2: Extract the Fully Qualified Domain Name (FQDN)**
 
 <img width="496" height="109" alt="image" src="https://github.com/user-attachments/assets/c04acdce-d140-415d-b8f4-4bf03965ef54" />
 
-**Explanation of Query:**
+### **Explanation of Query:**
 
 <img width="715" height="488" alt="image" src="https://github.com/user-attachments/assets/afdeb25e-cc9b-4341-bd1a-9a989ca927e9" />
 
-**➤ Result**
+### **➤ Result**
 
 **BSTOLL-L.froth.ly**
 
 <img width="935" height="366" alt="image" src="https://github.com/user-attachments/assets/1bf7637a-e12c-43aa-a149-f4ae31d8116d" />
 
-**➤ SOC Relevance**
+### **➤ SOC Relevance**
 
 Identifying endpoints that different from normal operating system configurations is an important responsibility of a Security Operations Centre. Starting with keywords like **winhostmon**, **windows**, and **OS** allowed us to identify the appropriate data source for assessing host operating system information. The **OS** field in the winhostmon sourcetype showed the operating system editions across endpoints.
 
