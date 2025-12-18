@@ -1,6 +1,6 @@
 # Coursework 2: BOTSv3 Incident Analysis and Presentation
 
-### **2. YouTube Video Walkthrough (max 10 minutes):**
+### **2. YouTube Video Walkthrough (max 10 minutes):** https://youtu.be/QUKvBkVVWdw
 ##
 # **1. Introduction**
 
